@@ -9,12 +9,16 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-// ENDPOINTS  
+// API DATA ENDPOINTS
 app.get("/api/boxscore", home.getBoxscore)
 app.get("/api/boxscores", home.getTodayscores)
-app.get("/api/players", player.getPlayers)
-app.get("/api/players/:id", player.getPlayer)
-app.put('/api/favPlayer', player.updatePlayer)
-app.delete('/api/delete', player.deletePlayer)
+app.get("/api/players", home.getPlayers)
+app.get("/api/player/:id", home.getPlayer)
 
-app.listen(SERVER_PORT, () => console.log(`Server pulse ${SERVER_PORT}`))
+// LOCAL ENPOINTS
+app.get("/api/roster", player.getRoster)
+app.post("/api/roster", player.createPlayer)    
+app.put("/api/roster/:id", player.editPlayer)
+app.delete("/api/roster/:id", player.deletePlayer)
+
+app.listen(SERVER_PORT, () => console.log(`⇌  pulse ${SERVER_PORT}`))

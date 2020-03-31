@@ -26,43 +26,52 @@ class Home extends Component {
     render() {
         const gameDay = this.state.boxData.map((element, index) => {
             const {day_night, venue, attendance} = element.game
-            return <div key={index} > {day_night} {venue.surface} {venue.name} {attendance} </div>
+            return <div key={index} > 
+                        <h3> {venue.name} </h3>
+                        <div> Day/Night: {day_night} </div>
+                        <div> Surface: {venue.surface} </div>
+                    </div>
         })  
         const gameStatsHome = this.state.boxData.map((element, index) => {
             const {market, name, runs, hits, errors} = element.game.home
-            return <div key={index} id='box' > <h3 id='team-name' > {market} </h3> <h3 id="team-name" > {name} </h3> <div> Runs {runs} </div> <div> Hits {hits} </div>  <div> Errors {errors} </div>   </div>  
+            return <div key={index} id='box' > 
+                        <h3 id='team-name' > {market} </h3> 
+                        <h3 id="team-name" > {name} </h3> 
+                        <div> Runs {runs} </div> 
+                        <div> Hits {hits} </div>  
+                        <div> Errors {errors} </div>   
+                    </div>  
         })
         const gameStatsAway = this.state.boxData.map((element, index) => {
             const {market, name, runs, hits, errors} = element.game.away
             console.log(element.game)
-            return <div key={index} id='box' > <h3 id='team-name' > {market} </h3> <h3 id="team-name" > {name} </h3> <div> Runs {runs} </div> <div> Hits {hits} </div>  <div> Errors {errors} </div>  </div>  
+            return <div key={index} id='box' > 
+                        <h3 id='team-name' > {market} </h3> 
+                        <h3 id="team-name" > {name} </h3> 
+                        <div> Runs {runs} </div> 
+                        <div> Hits {hits} </div>  
+                        <div> Errors {errors} </div>  
+                    </div>  
         })
         return (
             <div className='live-update'>
-                {/* <button onClick={this.loadBoxscore}> Game Highlights </button> */}
-                {/* <button onClick={this.todayScore}> Today's Scores </button> */}
-            <div id='live-update' >
-
-                <div className='gameday'>
-                    <div id='venue'>
-                    <h1> GameDay </h1>
-                        {gameDay}
+                {/* <button onClick={this.todayScore}> get </button> */}
+                <div id='live-update' >
+                    <div className='gameday'>
+                        <h1> GameDay </h1> 
+                            {gameDay} 
+                    </div>
+                    <div className='home-feed' >
+                        <div className='welcome-box'> 
+                            <h1> Home </h1> 
+                            {gameStatsHome} 
+                        </div>
+                        <div className='welcome-box'> 
+                            <h1> Away </h1> 
+                            {gameStatsAway} 
+                        </div>
                     </div>
                 </div>
-                    
-                <div className='home-feed' >
-                    <h1> Home </h1>
-                    <div className='welcome-box'>
-                        {gameStatsHome}
-                    </div>
-                    
-                    <h1> Away </h1>
-                    <div className='welcome-box'>
-                        {gameStatsAway}
-                    </div>
-
-                </div>
-            </div>
             </div>
         )
     }
