@@ -35,7 +35,8 @@ module.exports = {
   },
   deletePlayer: (req,res) => {
     const {id} = req.params
-    const index = playerData.find(e => e.id === +id)
+    const index = playerData.findIndex(e => e.id === +id)
+    // console.log(playerData)
     playerData.splice(index, 1)
     res.status(200).send(playerData)
   }

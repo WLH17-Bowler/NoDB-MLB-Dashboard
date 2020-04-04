@@ -1,0 +1,1 @@
+CREATE TABLE roster (id SERIAL PRIMARY KEY, name VARCHAR(50), img TEXT, team TEXT, position VARCHAR(2))

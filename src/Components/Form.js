@@ -25,7 +25,8 @@ class Form extends Component {
 	}
     render() {
 		const {name, img, team, position} = this.state
-		const {id} = this.props
+		const {id} = this.props.roster
+		console.log(id)
         return (
             <div>
 				{this.state.editToggle === true ?
@@ -42,7 +43,7 @@ class Form extends Component {
 						<img src={img} alt='' />
 						<p> {team} </p>
 						<p> {position} </p>
-						<button id='cut' onClick={this.props.deletePlayer} > Cut Player </button>
+						<button id='cut' onClick={() => this.props.deletePlayer(id)} > Cut Player </button>
 					</div>
 				}
             </div>
